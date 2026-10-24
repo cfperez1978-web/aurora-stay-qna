@@ -33,7 +33,7 @@ with st.sidebar:
         "k (chunks to retrieve)",
         min_value=1,
         max_value=10,
-        value=2,
+        value=4,  # evaluated setting (512 token chunks, k = 4)
         help="Number of relevant chunks fetched from the vector store."
     )
 
@@ -62,6 +62,10 @@ with st.sidebar:
 
 st.title("🏨 Aurora Stays")
 st.write("Ask a question about Aurora Stays policies.")
+
+# Show the forwarded URL that is serving this app (Codespaces port 8501)
+_host = st.context.headers.get("X-Forwarded-Host") or st.context.headers.get("Host", "")
+st.caption(f"Served at https://{_host}  |  backend API: {BACKEND_URL}")
 
 
 # ---------------------------------------------------------
